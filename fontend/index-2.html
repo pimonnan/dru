@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic VUE.JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<style>
+    h1{
+        text-align: center;
+    }    
+</style>
+<body>
+    <div id = "app-vue">
+        <h1>{{ title }}</h1>
+        <h2>Name : {{ name }}</h2>
+        <h2>Job : {{ job }}</h2>
+        <a v-bind:href = "website" target="_blank">{{website}}</a>
+        <h3>Call function = {{ getName() }}</h3>
+        <h3>Call function parameter = {{ getName2('Rajaphat') }}</h3>
+
+        <hr>
+        <h3>count {{ count }}</h3>
+        <input type="text" v-bind:value="name">
+        <button v-on:click="addCount">Add</button>
+        <button v-on:click="subTract">subTract</button> <br><br>
+        <input type="text"  v-model = "age" >
+        <h2>Age : {{ age }}</h2>
+        <hr>
+        <h1>2 Way Data Binding (v-model)</h1>
+        <input type="checkbox" value="html" v-model = "lang"> HTML
+        <input type="checkbox" value="css" v-model = "lang"> CSS
+        <input type="checkbox" value="javascript" v-model = "lang"> JAVASCRIPT
+        <h2>{{ lang }}</h2>
+
+        Job <select name = "" id = "" v-model = "job2">
+            <option value="programmer">programmer</option>
+            <option value="IT">IT</option>
+            <option value="Accountiong">Accountiong</option>
+        </select>
+        <h2>{{ job2 }}</h2>
+    </div>
+
+    <div id = "app2">
+        <h2>{{ title2 }}</h2>
+        
+        <ul v-for = "row in Emp">
+            <li>
+                <h2>Name : {{row.name}} | salary : {{row.salary}}</h2>
+            </li>
+        </ul>
+    </div> 
+<script>
+    var app = new Vue({
+        el : "#app-vue",
+        data : {
+            title : 'Vue.JS Basic',
+            name : 'cafe',
+            job : 'Student',
+            website : "https://google.com",
+            surname : "",
+            count : 0,
+            age : 0,
+            lang : [],
+            job2 : "",
+            
+      
+        },
+        methods : {
+            getName : function () {
+                return 'Dhonburi';
+            },
+            getName2 : function(surname) {
+                return surname;
+            },
+            addCount : function() {
+                return This.count++;
+            },
+            subTract : function() {
+                return this.count--;
+            },
+            KeyValue : function() {
+                return this.age;
+            },
+            
+        }
+    });
+    var app2 = new Vue({
+        el : '#app2',
+        data : {
+            title2 : 'title2',
+            Emp : [
+                {
+                name : 'Mama',
+                salary : 100
+                },
+                {
+                name : 'Dog',
+                salary : 3000
+                }
+            ]
+        }
+    });
+
+
+    // function myfunction() {
+        // alert('It work');
+    // }
+
+</script>
+</body>
+</html>
